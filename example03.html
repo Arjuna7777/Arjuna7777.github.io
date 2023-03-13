@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script src="aframe/aframe.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- Grey background -->
+      <a-sky color="#777"></a-sky>   <!-- Green torus -->
+  <a-torus color="green" radius="1" radius-tubular="0.2" position="-1.99 1 -5"></a-torus>
+
+  <!-- Purple plane -->
+  <a-plane width="7" height="7" rotation="-50 0 0" position="-2.33 -2.08 -4.945" color="purple"></a-plane>
+
+  <!-- Yellow cylinder -->
+  <a-cylinder color="yellow" height="-2" radius="0.05" position="-2 -1 -5"></a-cylinder>
+
+  <!-- Blue cylinder -->
+  <a-cylinder color="blue" height="2" radius="0.05" position="-3 -1 -5"></a-cylinder>
+
+  <!-- Orange torus knot -->
+  <a-torus-knot color="orange" radius="1.2" position="-3 1 -5"></a-torus-knot>
+
+  <!-- Text -->
+  <a-plane width="9" height="2" position="3 1 -9"></a-plane>
+  <a-text font="arial-msdf.json" negate="false" value="Вітаємо у браузерній VR!Олександр Алещенко" color="black" width="10" position="-0.5 1 -6"></a-text>
+
+  <!-- Camera -->
+  <a-entity camera position="0 1.6 0" look-controls></a-entity>
+</a-scene>
+</body>
+</html>
