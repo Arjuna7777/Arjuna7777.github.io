@@ -1,0 +1,94 @@
+<html>
+     <head> 
+           <script src="../aframe/aframe.min.js"></script>
+           <script type="text/javascript">
+                   const day = 24.0*60*60;  
+                   AFRAME.registerComponent('planet', {   
+                      schema: {     
+                        name: {type: 'string', default: ""},      
+                        dist: {type: 'number', default: 0},        
+                        mass: {type: 'number', default: 0},        
+                        T: {type: 'int', default: 0},     
+                        v: {type: 'array', default: [0,0,0]},     
+                        a: {type: 'array', default: [0,0,0]},      
+                        pos: {type: 'array', default: [0,0,0]}    
+                      }, 
+                        
+                     init: function () {     
+                       this.data.T*=day;      
+                       this.data.pos[0]=this.data.dist; 
+                       this.el.setAttribute('position',this.data.dist/1e9+' 0 0');     
+                       if(this.data.T!=0)      
+                         this.data.v[1] = 2*Math.PI*this.data.dist/this.data.T;   
+                     } 
+                   });
+                
+                
+                AFRAME.registerComponent('main', {   
+                     init: function() {     
+                          this.solar_system = document.querySelectorAll('[planet]');   
+                     },
+                     
+                      tick: function (time, deltaTime) {     
+                           const dt = day/3;      
+                           const G=6.67e-11;     
+                           for(var i = 0; i<this.solar_system.length; i++) {       
+                                planet_i=this.solar_system[i].getAttribute('planet');       
+                                planet_i.a[0]=planet_i.a[1]=planet_i.a[2]=0; 
+                                 for(var j = 0; j<this.solar_system.length; j++) {         
+                                      
+                                      planet_j=this.solar_system[j].getAttribute('planet');         
+                                      if(i!=j) {           
+                                           deltapos = [0,0,0];           
+                                           for(var k = 0; k < 3; k++)             
+                                                deltapos[k]=planet_j.pos[k]-planet_i.pos[k];           
+                                           var r=Math.sqrt(Math.pow(deltapos[0],2)+                 
+                                                           Math.pow(deltapos[1],2)+Math.pow(deltapos[2],2));           
+                                           for(var k = 0; k < 3; k++)             
+                                                planet_i.a[k]+=G*planet_j.mass*deltapos[k]/                            
+                                                     Math.pow(r, 3);         
+                                      }       
+                                 }
+                                for(var k = 0; k < 3; k++)         
+                                     planet_i.v[k]+=planet_i.a[k]*dt;       
+                                for(var k = 0; k < 3; k++)         
+                                     planet_i.pos[k]+=planet_i.v[k]*dt;       
+                                this.solar_system[i].setAttribute('position',               
+                                                     (planet_i.pos[0]/1e9)+' '+(planet_i.pos[1]/1e9)+             
+                                                      ' '+(planet_i.pos[2]/1e9));     
+                           }   
+                      }
+                     });
+                
+             </script>
+     </head>
+     <body>
+          <a-scene>
+                  <a-sky color="black" radius=1500></a-sky>   
+                  <a-camera position="0 0 600" 
+                            cursor-visible="true" 
+                            cursor-scale="2" 
+                            cursor-color="#0095DD" 
+                            cursor-opacity="0.5"></a-camera>
+                 <a-entity geometry="primitive: sphere; radius: 20.510" material="color: yellow" 
+                           planet="dist: 0; mass: 1.989e30; name: Sun"></a-entity> 
+               
+                 <a-entity geometry="primitive: sphere; radius: 2.4397" material="color: #AA5588" 
+                           planet="dist: 57.910e9; mass: 3.285e23; T: 88; name: Mercury"></a-entity> 
+               
+                 <a-entity geometry="primitive: sphere; radius: 6.0518" material="color: white" 
+                           planet="dist: 108.2e9; mass: 4.876e24; T: 224.7; name: Venus"></a-entity> 
+               
+                 <a-entity geometry="primitive: sphere; radius: 6.371" material="color: cyan" 
+                           planet="dist: 149.598e9; mass: 5.972e24; T: 365; name: Earth"></a-entity>
+               
+                 <a-entity geometry="primitive: sphere; radius: 3.3895" material="color: cyan" 
+                           planet="dist: 227.939e9; mass: 6.417e23; T: 687; name: Mars"></a-entity>
+               
+                 <a-entity geometry="primitive: sphere; radius: 69.911" material="color: cyan" 
+                           planet="dist: 780.570e9; mass: 1.8982e27; T: 4332; name: Jupiter"></a-entity>   
+               
+                 <a-entity main></a-entity> 
+          </a-scene>
+    </body>
+</html>
