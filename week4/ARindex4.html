@@ -1,0 +1,25 @@
+<html>
+     <head> 
+          <meta charset="utf-8">
+          <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+          <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+          <title>Домашнє завдання тижня 04</title> 
+     </head>
+     <body style='marin : 0px; overflow: hidden:'>
+        <a-scene embedded arjs="debuUIEnabled:false">
+             <a-marker preset="hiro">
+                  <a-entity geometry="primitive: box; width: 0.75; height: 0.75; depth: 0.75" light="type: point; color: blue; intensity: 2"
+                             material="color: white; shader: flat; src: ../1637246799_1-gamerwall-pro-p-tekstura-fruktov-oboi-na-zastavku-1.jpg" position="0 0 0"></a-entity>
+             </a-marker> 
+             <a-marker preset="kanji">
+                   <a-entity geometry="primitive: sphere; radius: 0.5" light="type: point; color: white; intensity: 2"
+                             material="color: white; shader: flat; src: ../591fc916890eb15c24298021.jpg" position="0 0 -1"></a-entity>
+             </a-marker>
+            <a-marker type='pattern' url='pattern-bukva-a.patt'> 
+                   <a-entity geometry = "primitive: icosahedron; radius: 1" light="type: point; color: white; intensity: 2"
+                             material="color: white; shader: flat; src: ../dzhungli.jpg" position="0 0 -2"></a-entity>
+             </a-marker>
+                   <a-entity camera></a-entity>             
+       </a-scene>
+    </body>
+</html>
