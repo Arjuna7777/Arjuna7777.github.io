@@ -1,0 +1,25 @@
+<html>
+     <head> 
+          <meta charset="utf-8">
+          <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+          <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+          <title>Домашнє завдання тижня 03</title> 
+     </head>
+     <body>
+         <a-scene embedded arjs>
+             <a-marker preset="hiro">
+                   <a-entity scale="0.2 0.2 0.2" rotation="-90 0 0">
+                   <!--<a-sky color="grey"></a-sky>-->
+                   <a-torus position="-2 1 -5" color="green" radius="1.2" animation="property: components.material.material.color;
+                           type: color; from: green; to: red; loop: true; dur: 10000"></a-torus>
+                  <a-plane src="../591fc916890eb15c24298021.jpg" width="7" height="7" rotation="-55 0 0" position="-2 -2 -5" color="purple"></a-plane>
+                  <a-cylinder color="yellow" height="2" radius="0.05" position="-2 -1 -5"></a-cylinder>
+                  <a-cylinder color="blue" height="2" radius="0.05" position="-3 -1 -5"></a-cylinder>
+                  <a-torus-knot color="orange" radius="1.2" position="-3 1 -5" animation="property: rotation; to: 0 0 360; loop: true; dur:10000"></a-torus-knot>
+                  <a-plane width="9" height="2" position="3 1 -9"></a-plane>
+                  <a-text font="../ariali-msdf.json" color="black" negate="false" value="Вітаємо у браузерній VR!" width="10" position="-0.5 1 -8.5"></a-text>
+                  </a-entity>
+             </a-marker>         
+    </a-scene>
+    </body>
+</html>
