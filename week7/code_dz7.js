@@ -20,7 +20,7 @@ const pyramidmesh=new THREE.Mesh(pyramidgeometry, pyramidmaterial);
 pyramidmesh.position.set(0, 2, -10); 
 scene.add(pyramidmesh); 
 
-const boxgeometry=new THREE.BoxGeometry(1, 1, 1); 
+const boxgeometry=new THREE.BoxGeometry(2, 2, 2); 
 const boxmaterial=new THREE.MeshNormalMaterial({ 
 	color: 0xFF0000, 
 	transparent: true, 
@@ -36,10 +36,26 @@ const spheremesh=new THREE.Line(spheregeometry, spherematerial);
 spheremesh.position.set(0.9, 0, -6); 
 scene.add(spheremesh); 
 
+function animate() {
+	delta += 0.1; 
+	//planegeometry.vertices[0].z = -25 + Math.sin(delta)*50; 
+	//planegeometry.verticesNeedUpdate = true;
+	
+        pyramidmesh.rotation.y+=0.1; 
+	
+	paramesh.rotation.x+=0.1; 
+	paramesh.rotation.y+=0.1;
+
+	renderer.render( scene, camera );
+	requestAnimationFrame( animate );	
+}
+
+animate();
+
 const circlegeometry=new THREE.CircleBufferGeometry(0.5); 
 const circlematerial=new THREE.MeshStandardMaterial({ 
 	color: 0x098877,  
-	roughness: 90.0,  
+	roughness: 80.0,  
 	metalness: 0.2 
 });
 const circlemesh=new THREE.Mesh(circlegeometry, circlematerial); 
