@@ -24,8 +24,6 @@ const boxmaterial=new THREE.MeshNormalMaterial({
   color: 0x0000FF, 
   transparent: true, 
   opacity: 1 
-});
-
 
 function animate() {
   delta += 0.1; 
