@@ -24,26 +24,7 @@ const boxmaterial=new THREE.MeshNormalMaterial({
   color: 0x0000FF, 
   transparent: true, 
   opacity: 1 
-
-function animate() {
-  delta += 0.1; 
-  //planegeometry.vertices[0].z = -25 + Math.sin(delta)*50; 
-  //planegeometry.verticesNeedUpdate = true;
-  
-  pyramidmesh.rotation.y+=0.1; 
-  
-  boxmesh.rotation.y += 0.01; // анимация куба
-  
-  spheremesh.position.y = Math.sin(delta) * 2; // анимация сферы
-  
-  paramesh.rotation.x+=0.1; 
-  paramesh.rotation.y+=0.1;
-
-  renderer.render( scene, camera );
-  requestAnimationFrame( animate );  
-}
-
-animate();
+}); 
 
 const boxmesh=new THREE.Mesh(boxgeometry, boxmaterial); 
 boxmesh.position.set(-0.9, 0, -6); 
