@@ -9,13 +9,13 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
-const boxgeometry = new THREE.BoxGeometry( 1, 1, 1 );
-const boxmaterial = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+const boxgeometry = new THREE.BoxGeometry( 2, 2, 2 );
+const boxmaterial = new THREE.MeshBasicMaterial( { color: 0x0000FF } );
 const cube = new THREE.Mesh( boxgeometry, boxmaterial );
 scene.add( cube );
 
 const cylgeometry = new THREE.CylinderGeometry( 5, 5, 20, 32 );
-const cylmaterial = new THREE.MeshLambertMaterial( {color: 0xffff00} );
+const cylmaterial = new THREE.MeshLambertMaterial( {color: 0x0000FF} );
 const cylinder = new THREE.Mesh( cylgeometry, cylmaterial );
 scene.add( cylinder );
 cylinder.position.z=-25;
@@ -32,7 +32,7 @@ lightTwo.position.set(25, 0, -25)
 camera.position.z = 7;
 camera.position.x = 2;
 
-renderer.setClearColor (0x555555);
+renderer.setClearColor (0x0000FF);
 renderer.clear();
 
 let angle = 0, radius = 47;
