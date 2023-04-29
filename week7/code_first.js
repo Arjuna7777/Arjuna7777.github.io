@@ -21,10 +21,10 @@ scene.add( cylinder );
 cylinder.position.z=-25;
 cylinder.position.x=5;
 
-var lightOne=new THREE.AmbientLight(0xffffff, 0.5);
+var lightOne=new THREE.AmbientLight(0x0000FF, 0.5);
 scene.add(lightOne);
 
-var lightTwo=new THREE.PointLight(0xffffff, 0.5);
+var lightTwo=new THREE.PointLight(0x0000FF, 0.5);
 scene.add(lightTwo);
 
 lightTwo.position.set(25, 0, -25)
