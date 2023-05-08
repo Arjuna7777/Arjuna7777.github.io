@@ -3,7 +3,7 @@
   <head>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
     <meta charset="UTF-8">
-    <title>Криворізька міська рада</title>
+    <title>Квадратна будівля з вікнами</title>
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.0/dist/aframe-extras.min.js"></script>
     <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.1.0/dist/aframe-physics-system.min.js"></script>
@@ -15,41 +15,38 @@
         padding: 0;
       }
     </style>
+    
   </head>
-  <body>
-    <a-scene background="color: #ECEFF1">
-      <a-assets>
-        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
-        <img id="wallTexture" src="https://cdn.aframe.io/examples/boilerplate/grass.jpg">
-      </a-assets>
+<body>
+  <a-scene>
+    <a-assets>
+      <img id="wallTexture" src="https://cdn.aframe.io/examples/boilerplate/grass.jpg">
+    </a-assets>
 
-      <!-- Небо -->
-      <a-sky color="#81D4FA"></a-sky>
+    <!-- Підлога -->
+    <a-box position="0 -0.5 -5" scale="40 1 40" color="#9E9E9E"></a-box>
 
-      <!-- Підлога -->
-      <a-box position="0 -1.5 0" scale="100 0.1 100" color="#9E9E9E"></a-box>
+    <!-- Будівля -->
+    <a-box position="0 3 -10" depth="25" height="6" width="25" color="#DDDDDD" src="#wallTexture"></a-box>
+    <a-entity position="0 3.5 -7.5" rotation="0 0 0">
+      <a-plane static-body position="0 0 0" depth="0.1" height="3" width="23" color="#FFFFFF" src="#wallTexture"></a-plane>
+      <a-plane static-body position="0 0 -15" depth="0.1" height="3" width="23" color="#FFFFFF" src="#wallTexture"></a-plane>
+      <a-plane static-body position="-11.5 0 -7.5" rotation="0 90 0" depth="0.1" height="3" width="25" color="#FFFFFF" src="#wallTexture"></a-plane>
+      <a-plane static-body position="11.5 0 -7.5" rotation="0 90 0" depth="0.1" height="3" width="25" color="#FFFFFF" src="#wallTexture"></a-plane>
+      <a-plane static-body position="0 0 -7.5" rotation="0 90 0" depth="0.1" height="3" width="23" color="#FFFFFF" src="#wallTexture"></a-plane>
+    </a-entity>
 
-      <!-- Будівля -->
-      <a-box static-body position="0 5 -8" depth="1" height="10" width="20" color="#DDDDDD" src="#wallTexture"></a-box>
-      <a-box static-body position="0 10.5 -8" depth="1" height="3" width="20.5" color="#1E88E5" src="#wallTexture"></a-box>
-      <a-box static-body position="11.5 10.5 -8" depth="1" height="3" width="7" color="#1E88E5" src="#wallTexture"></a-box>
-      <a-box static-body position="-11.5 10.5 -8" depth="1" height="3" width="7" color="#1E88E5" src="#wallTexture"></a-box>
+    <!-- Вікна -->
+    <a-box position="0 2.9 -13" depth="0.1" height="3" width="8" color="#FFFFFF" src="https://cdn.aframe.io/examples/boilerplate/door.jpg"></a-box>
+    <a-box position="-11 2.9 -7.5" depth="0.1" height="3" width="8" color="#FFFFFF" src="https://cdn.aframe.io/examples/boilerplate/door.jpg"></a-box>
+    <a-box position="11 2.9 -7.5" depth="0.1" height="3" width="8" color="#FFFFFF" src="https://cdn.aframe.io/examples/boilerplate/door.jpg"></a-box>
 
-      <!-- Двері -->
-      <a-box static-body position="0 4.3 -8.6" depth="0.1" height="2.1" width="3.2" color="#795548" src="#wallTexture"></a-box>
-      <a-box position="0 4.2 -8.6" depth="0.2" height="2" width="0.2" color="#FFC107" src="#wallTexture"></a-box>
-      <a-box position="0 4.2 -8.4" depth="0.2" height="2" width="0.2" color="#FFC107" src="#wallTexture"></a-box>
-      <a-box position="0 4 -8.6" depth="0.2" height="0.2" width="3.2" color="#FFC107" src="#wallTexture"></a-box>
+    <!-- Сонце -->
+    <a-sphere position="-50 150 0" radius="30" color="#fff"></a-sphere>
 
-      <!-- Вікна -->
-      <a-box static-body position="7.5 6 -8.6" depth="0.2" height="4" width="4.5" color="#FFFFFF" src="#wallTexture"></a-box>
-      <a-box static-body position="-7.5 6 -8.6" depth="0.2" height="4" width="4.5" color="#FFFFFF" src="#wallTexture"></a-box>
+    <!-- Освітлення -->
+    <a-entity light="type: point; intensity: 2; distance: 5; decay: 1; color: #FFFFFF;" position="0 5 0"></a-entity>
+  </a-scene>
 
-      <!-- Сонце -->
-      <a-sphere position="-50 150 0" radius="30" color="#fff"></a-sphere>
-
-      <!-- Освітлення -->
-      <a-entity light="type: point; intensity: 2; distance: 5; decay: 1; color: #FFFFFF;" position="0 5 0"></a-entity>
-    </a-scene>
-  </body>
+</body>
 </html>
