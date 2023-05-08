@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
+    <meta charset="UTF-8">
     <title>Криворізька міська рада</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.1.0/aframe.min.js"></script>
-</head>
-<body>
-    <a-scene>
-        <!-- Небо -->
-        <a-sky color="#81D4FA"></a-sky>
-        
-        <!-- Підлога -->
-        <a-box position="0 -1.5 0" scale="100 0.1 100" color="#9E9E9E"></a-box>
-        
-        <!-- Будівля -->
-        <a-box position="0 0 -8" scale="20 10 0.5" color="#FFFFFF"></a-box>
-        <a-box position="0 8.5 -8" scale="20.5 3 0.5" color="#FFC107"></a-box>
-        <a-box position="0 7.25 -7.75" scale="7 1.5 0.5" color="#FFC107"></a-box>
-        <a-box position="0 9.75 -7.75" scale="7 1.5 0.5" color="#FFC107"></a-box>
-        
-        <!-- Двері -->
-        <a-box position="0 0.5 -7" scale="3 1.5 0.1" color="#795548"></a-box>
-        <a-box position="0 -0.75 -7" scale="0.5 1 0.1" color="#FFC107"></a-box>
-        
-        <!-- Вікна -->
-        <a-box position="7.5 4.5 -7.1" scale="5 4 0.1" color="#FFFFFF"></a-box>
-        <a-box position="-7.5 4.5 -7.1" scale="5 4 0.1" color="#FFFFFF"></a-box>
-        
-        <!-- Сонце -->
-        <a-sphere position="-50 150 0" radius="30" color="#fff"></a-sphere>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-extras/v3.3.0/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.1.0/dist/aframe-physics-system.min.js"></script>
+    <style>
+      a-scene {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <a-scene background="color: #ECEFF1">
+      <a-assets>
+        <img id="skyTexture" src="https://cdn.aframe.io/a-painter/images/sky.jpg">
+        <img id="wallTexture" src="https://cdn.aframe.io/examples/boilerplate/grass.jpg">
+      </a-assets>
+
+      <!-- Небо -->
+      <a-sky color="#81D4FA"></a-sky>
+
+      <!-- Підлога -->
+      <a-box position="0 -1.5 0" scale="100 0.1 100" color="#9E9E9E"></a-box>
+
+      <!-- Будівля -->
+      <a-box static-body position="0 5 -8" depth="1" height="10" width="20" color="#DDDDDD" src="#wallTexture"></a-box>
+      <a-box static-body position="0 10.5 -8" depth="1" height="3" width="20.5" color="#1E88E5" src="#wallTexture"></a-box>
+      <a-box static-body position="11.5 10.5 -8" depth="1" height="3" width="7" color="#1E88E5" src="#wallTexture"></a-box>
+      <a-box static-body position="-11.5 10.5 -8" depth="1" height="3" width="7" color="#1E88E5" src="#wallTexture"></a-box>
+
+      <!-- Двері -->
+      <a-box static-body position="0 4.3 -8.6" depth="0.1" height="2.1" width="3.2" color="#795548" src="#wallTexture"></a-box>
+      <a-box position="0 4.2 -8.6" depth="0.2" height="2" width="0.2" color="#FFC107" src="#wallTexture"></a-box>
+      <a-box position="0 4.2 -8.4" depth="0.2" height="2" width="0.2" color="#FFC107" src="#wallTexture"></a-box>
+      <a-box position="0 4 -8.6" depth="0.2" height="0.2" width="3.2" color="#FFC107" src="#wallTexture"></a-box>
+
+      <!-- Вікна -->
+      <a-box static-body position="7.5 6 -8.6" depth="0.2" height="4" width="4.5" color="#FFFFFF" src="#wallTexture"></a-box>
+      <a-box static-body position="-7.5 6 -8.6" depth="0.2" height="4" width="4.5" color="#FFFFFF" src="#wallTexture"></a-box>
+
+      <!-- Сонце -->
+      <a-sphere position="-50 150 0" radius="30" color="#fff"></a-sphere>
+
+      <!-- Освітлення -->
+      <a-entity light="type: point; intensity: 2; distance: 5; decay: 1; color: #FFFFFF;" position="0 5 0"></a-entity>
     </a-scene>
-</body>
+  </body>
 </html>
