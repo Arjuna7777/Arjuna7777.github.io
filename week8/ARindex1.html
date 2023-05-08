@@ -5,13 +5,16 @@
           <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
           <title>Домашнє завдання тижня 04</title> 
      </head>
-     <body style='marin : 0px; overflow: hidden:'>
-        <a-scene embedded arjs="debuUIEnabled:false">
-             <a-marker preset="pattern-Coat_of_Arms_of_Kryvyy_Rih">
-                  <a-entity geometry="primitive: box; width: 0.75; height: 0.75; depth: 0.75" light="type: point; color: blue; intensity: 2"
-                             material="color: white; shader: flat; src: ../123.png" position="0 0 0"></a-entity>
+     <body style='margin: 0px; overflow: hidden;'>
+        <a-scene embedded arjs="debugUIEnabled:false">
+             <a-marker preset="pattern-Coust_of_Arms_of_Kryvyy_Rih">
+                  <a-entity geometry="primitive: box; width: 0.75; height: 0.75; depth: 0.75" 
+                            light="type: point; color: blue; intensity: 2"
+                            material="color: white; shader: flat; src: ../123.png" 
+                            position="0 0 0">
+                  </a-entity>
              </a-marker> 
-                   <a-entity camera></a-entity>             
-       </a-scene>
+             <a-entity camera></a-entity>             
+        </a-scene>
     </body>
 </html>
