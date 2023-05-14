@@ -18,7 +18,7 @@ window.addEventListener("DOMContentLoaded", async () => {
       const light = new THREE.HemisphereLight( 0xffffbb, 0xcccccc, 1 );
 	scene.add( light );
 
-      const texture = new THREE.TextureLoader().load('1_kqi9JK434G5M3UYKfX_BbA-removebg-preview.png');
+      const texture = new THREE.TextureLoader().load('halloween.png');
 
       const faceMesh = mindarThree.addFaceMesh();
       faceMesh.material.map = texture;
