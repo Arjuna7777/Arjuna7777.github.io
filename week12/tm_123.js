@@ -42,20 +42,20 @@
 		//console.log(hands);
 
 		if(hands.length == 0)
-			labelContainer.innerHTML = "Не бачу рук";
+			labelContainer.innerHTML = "НЕ БАЧУ РУК";
 		else
 		{
 			if(hands[0].handedness == "Left")
-				labelContainer.innerHTML = "Бачу ліву руку<br><br>";
+				labelContainer.innerHTML = "БАЧУ ЛІВУ РУКУ<br><br>";
 			else
-				labelContainer.innerHTML = "Бачу праву руку<br><br>";
+				labelContainer.innerHTML = "БАЧУ ПРАВУ РУКУ<br><br>";
 
 			const fingerLookupIndices = {
-				thumb: [0, 1, 2, 3, 4],
-				indexFinger: [0, 5, 6, 7, 8],
 				middleFinger: [0, 9, 10, 11, 12],
+				indexFinger: [0, 5, 6, 7, 8],
 				ringFinger: [0, 13, 14, 15, 16],
 				pinky: [0, 17, 18, 19, 20],
+				thumb: [0, 1, 2, 3, 4],
 			};
 
 			const fingers = Object.keys(fingerLookupIndices);
@@ -68,7 +68,7 @@
 				const opposite = Math.hypot(points[1].x - points[2].x, points[1].y - points[2].y);
 				const angle = Math.atan2(opposite, adjacent);
 				const degrees = angle * 180 / Math.PI;
-				labelContainer.innerHTML += "Кут між пальцями " + finger + ": " + degrees.toFixed(2) + " градусів<br>";
+				labelContainer.innerHTML += "КУТ МІЖ ПАЛЬЦЯМИ " + finger + ": " + degrees.toFixed(2) + " ГРАДУСІВ<br>";
 			}
 		}
 	}
