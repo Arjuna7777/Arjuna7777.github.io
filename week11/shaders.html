@@ -1,0 +1,80 @@
+<!DOCTYPE html> 
+<html> 
+  <head><title>threeJS shaders</title></head> 
+  <body> <canvas id="Canvas"></canvas> 
+    <!--<script src="three.js-dev/build/three.js"></script> -->
+    <!-- Вершинний шейдер --> 
+    <script type="x-shader/x-vertex" id="vertexShader"> 
+           void main()
+           { 
+                  gl_Position = projectionMatrix * 
+                           modelViewMatrix * vec4(position,1.0); 
+           }
+    </script>
+           
+    
+    <!-- Фрагментний шейдер --> 
+    <script type="x-shader/x-fragment" id="fragmentShader"> 
+             void main() 
+             {  
+                gl_FragColor = vec4(5.0, 0.0, 5.0, 0.0);
+             } 
+    </script> 
+    
+    <script type="x-shader/x-fragment" id="fragmentShader"> 
+         uniform float delta;
+         void main()
+         {
+             gl_FlagColor = vec4(5.0, delta + 0.0, 5.0, 0.0);
+         }
+    </script>
+    
+    <script type="module"> 
+
+	import * as THREE from '../three/three.module.js';
+     const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('Canvas'), antialias: true});
+      renderer.setClearColor(0xCBEFFF); 
+      renderer.setPixelRatio(window.devicePixelRatio); 
+      renderer.setSize(window.innerWidth, window.innerHeight); 
+      
+      var camera=new THREE.PerspectiveCamera(35, window.innerWidth / window.innerHeight, 0.1, 3000); 
+      var scene=new THREE.Scene(); 
+      
+      var lightOne=new THREE.AmbientLight(0xffff, 0.5); 
+      scene.add(lightOne); 
+      
+      var lightTwo=new THREE.PointLight(0xffff, 0.5); 
+      scene.add(lightTwo); 
+      
+      // користувацький шейдер 
+      var customUniforms={
+        delta: {value: 0}
+      };
+      
+      var customMat=new THREE.ShaderMaterial({
+          uniforms: customUniforms,
+          vertexShader: document.getElementById('vertexShader').textContent,
+          fragmentShader: document.getElementById('fragmentShader').textContent});
+      
+      var boxgeometry=new THREE.BoxBufferGeometry(100, 100, 100, 10, 10, 10); 
+      var boxmesh=new THREE.Mesh(boxgeometry, customMat); 
+      boxmesh.position.set(-100, 0, -1000); 
+      scene.add(boxmesh); 
+      
+      var cubegeometry=new THREE.BoxGeometry(100, 100, 100); 
+      var cubemesh=new THREE.Mesh(cubegeometry, customMat); 
+      cubemesh.position.set(150, 0, -1000); 
+      scene.add(cubemesh); 
+      requestAnimationFrame(render); 
+      
+      var delta=0;
+      
+      function render(){
+        delta+=0.1;
+        boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
+        renderer.render(scene, camera);
+        requestAnimationFrame(render); 
+      }
+    </script> 
+  </body>
+</html>
