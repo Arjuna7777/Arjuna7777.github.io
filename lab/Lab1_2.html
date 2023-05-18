@@ -6,8 +6,9 @@
   </head>
   <body>
     <a-scene physics embedded arjs>
+      <img id="texture" src="../123.png" style="display:none">
       <a-entity geometry="primitive: box; width: 0.75; height: 0.75; depth: 0.75" light="type: point; color: blue; intensity: 2"
-                             material="color: white; shader: flat; src: ../123.png" position="0 0 0"></a-entity>
+                             material="color: white; shader: flat; src: #texture" position="0 0 0"></a-entity>
     </a-scene>
   </body>
 </html>
