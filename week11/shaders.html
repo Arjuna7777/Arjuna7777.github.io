@@ -1,9 +1,9 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html> 
   <head><title>threeJS shaders</title></head> 
   <body> <canvas id="Canvas"></canvas> 
     <!--<script src="three.js-dev/build/three.js"></script> -->
-    <!-- Вершинний шейдер --> 
+    <!-- Р’РµСЂС€РёРЅРЅРёР№ С€РµР№РґРµСЂ --> 
     <script type="x-shader/x-vertex" id="vertexShader"> 
            void main()
            { 
@@ -13,7 +13,7 @@
     </script>
            
     
-    <!-- Фрагментний шейдер --> 
+    <!-- Р¤СЂР°РіРјРµРЅС‚РЅРёР№ С€РµР№РґРµСЂ --> 
     <script type="x-shader/x-fragment" id="fragmentShader"> 
              void main() 
              {  
@@ -31,7 +31,7 @@
     
     <script type="module"> 
 
-	import * as THREE from '../three/three.module.js';
+  import * as THREE from '../three/three.module.js';
      const renderer = new THREE.WebGLRenderer({canvas: document.getElementById('Canvas'), antialias: true});
       renderer.setClearColor(0xCBEFFF); 
       renderer.setPixelRatio(window.devicePixelRatio); 
@@ -46,32 +46,33 @@
       var lightTwo=new THREE.PointLight(0xffff, 0.5); 
       scene.add(lightTwo); 
       
-      // користувацький шейдер 
+      // РєРѕСЂРёСЃС‚СѓРІР°С†СЊРєРёР№ С€РµР№РґРµСЂ 
       var customUniforms={
         delta: {value: 0}
       };
       
-      var customMat=new THREE.ShaderMaterial({
+       var sphereGeometry= new THREE.SphereGeometry(50,50,50); // changed from BoxGeometry
+       var customMat=new THREE.ShaderMaterial({
           uniforms: customUniforms,
           vertexShader: document.getElementById('vertexShader').textContent,
           fragmentShader: document.getElementById('fragmentShader').textContent});
-      
-      var boxgeometry=new THREE.BoxBufferGeometry(100, 100, 100, 10, 10, 10); 
-      var boxmesh=new THREE.Mesh(boxgeometry, customMat); 
-      boxmesh.position.set(-100, 0, -1000); 
-      scene.add(boxmesh); 
-      
+
+       var sphereMesh=new THREE.Mesh(sphereGeometry, customMat); // changed from Mesh(boxgeometry
+       sphereMesh.position.set(-100, 0, -1000); 
+       scene.add(sphereMesh);
+
       var cubegeometry=new THREE.BoxGeometry(100, 100, 100); 
       var cubemesh=new THREE.Mesh(cubegeometry, customMat); 
       cubemesh.position.set(150, 0, -1000); 
       scene.add(cubemesh); 
+      
       requestAnimationFrame(render); 
       
       var delta=0;
       
       function render(){
         delta+=0.1;
-        boxmesh.material.uniforms.delta.value=0.5+Math.sin(delta);
+        sphereMesh.material.uniforms.delta.value=0.5+Math.sin(delta); // changed from boxmesh to spheremesh 
         renderer.render(scene, camera);
         requestAnimationFrame(render); 
       }
